@@ -42,12 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pessoa.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Apresentação\OBJ\Menu.cs" />
+    <Compile Include="Apresentação\OBJ\MenuAgencia.cs" />
+    <Compile Include="Apresentação\OBJ\MenuConta.cs" />
+    <Compile Include="Dominio\OBJ\Agencia.cs" />
+    <Compile Include="Dominio\OBJ\Conta.cs" />
+    <Compile Include="Dominio\OBJ\Pessoa.cs" />
+    <Compile Include="Apresentação\Program.cs" />
+    <Compile Include="Dominio\ValidaCadastro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infraestrutura\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
