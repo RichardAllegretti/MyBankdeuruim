@@ -50,13 +50,13 @@
     <Compile Include="Dominio\OBJ\Pessoa.cs" />
     <Compile Include="Apresentação\Program.cs" />
     <Compile Include="Dominio\ValidaCadastro.cs" />
+    <Compile Include="Infraestrutura\AgenciaDAO.cs" />
+    <Compile Include="Infraestrutura\Interface\IArmazenamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infraestrutura\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
