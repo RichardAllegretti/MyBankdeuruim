@@ -8,7 +8,7 @@ using MyBank.Infraestrutura.Interface;
 
 namespace MyBank.Infraestrutura
 {
-	public class AgenciaDAO : IArmazenamento<Agencia>
+	public class AgenciaDAO : IArmazenamento<Agencia> 
 	{
 		List<Agencia> agencias = new List<Agencia>();
 

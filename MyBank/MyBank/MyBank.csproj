@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apresentação\Interface\IMenu.cs" />
     <Compile Include="Apresentação\OBJ\Menu.cs" />
     <Compile Include="Apresentação\OBJ\MenuAgencia.cs" />
     <Compile Include="Apresentação\OBJ\MenuConta.cs" />
