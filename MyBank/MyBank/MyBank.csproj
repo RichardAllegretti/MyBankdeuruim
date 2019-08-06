@@ -46,13 +46,16 @@
     <Compile Include="Apresentação\OBJ\Menu.cs" />
     <Compile Include="Apresentação\OBJ\MenuAgencia.cs" />
     <Compile Include="Apresentação\OBJ\MenuConta.cs" />
+    <Compile Include="Apresentação\OBJ\MenuPessoa.cs" />
     <Compile Include="Dominio\OBJ\Agencia.cs" />
     <Compile Include="Dominio\OBJ\Conta.cs" />
     <Compile Include="Dominio\OBJ\Pessoa.cs" />
     <Compile Include="Apresentação\Program.cs" />
     <Compile Include="Dominio\ValidaCadastro.cs" />
     <Compile Include="Infraestrutura\AgenciaDAO.cs" />
+    <Compile Include="Infraestrutura\ContaDAO.cs" />
     <Compile Include="Infraestrutura\Interface\IArmazenamento.cs" />
+    <Compile Include="Infraestrutura\PessoaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

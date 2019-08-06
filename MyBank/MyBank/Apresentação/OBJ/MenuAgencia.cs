@@ -20,16 +20,16 @@ namespace MyBank.Apresentação.OBJ
             switch (opcao.Key)
             {
                 case ConsoleKey.F1:
-                    CadastrarAgencia(dao);
+                    Cadastrar(dao);
                     break;
                 case ConsoleKey.F2:
-                    AtualizarAgencia(dao);
+                    Atualizar(dao);
                     break;
                 case ConsoleKey.F3:
-                    RemoverAgencia(dao);
+                    Remover(dao);
                     break;
                 case ConsoleKey.F4:
-                    SelecionarTodasAgencias(dao);
+					SelecionarTudo( dao);
                     break;
                 case ConsoleKey.F5:
                     menu.Inicio();
@@ -38,65 +38,6 @@ namespace MyBank.Apresentação.OBJ
                     Console.WriteLine("Opção Inválida.");
                     break;
             }       
-        }
-
-        private void SelecionarTodasAgencias(IArmazenamento<Agencia> dao)
-        {
-            Console.Clear();
-
-            Console.WriteLine("Listagem de todas as agencias: \n");
-
-            foreach (var agencia in dao.SelecionarTudo())
-            {
-                Console.WriteLine(string.Format("Nome: "));
-            }
-        }
-
-        private void RemoverAgencia(IArmazenamento<Agencia> dao)
-        {
-            Console.Clear();
-
-            Console.WriteLine("Qual o nome da Agencia que deseja remover:");
-            string nomeAgencia = Console.ReadLine();
-
-            Agencia agencia = dao.Selecionar(nomeAgencia);
-
-            dao.Remover(agencia);
-
-            Console.WriteLine("Agencia Removida.");
-        }
-
-        private void AtualizarAgencia(IArmazenamento<Agencia> dao)
-        {
-            Console.Clear();
-
-            Console.WriteLine("Atualizar Agencia:");
-
-            Console.WriteLine("Nome da Agencia a ser atualizada:");
-            string nomeAgencia = Console.ReadLine();
-
-            Agencia agenciaAntiga = dao.Selecionar(nomeAgencia);
-
-            Agencia agenciaNova = new Agencia();
-
-            agenciaNova = InformacoesAgencia();
-
-            dao.Atualizar(agenciaAntiga, agenciaNova);
-
-            Console.WriteLine("Agencia Atualizada.");
-        }
-
-        private void CadastrarAgencia(IArmazenamento<Agencia> dao)
-        {
-            Console.Clear();
-
-            Console.WriteLine("Cadastro da Agencia.");
-
-            Agencia agencia = InformacoesAgencia();
-
-            dao.Cadastrar(agencia);
-
-            Console.WriteLine("Agencia cadastrada.");
         }
 
         private Agencia InformacoesAgencia()
@@ -117,5 +58,63 @@ namespace MyBank.Apresentação.OBJ
 
             return agencia;
         }
-    }
+
+		public void Cadastrar(IArmazenamento<Agencia> dao)
+		{
+			Console.Clear();
+
+			Console.WriteLine( "Cadastro da Agencia." );
+
+			Agencia agencia = InformacoesAgencia();
+
+			dao.Cadastrar( agencia );
+
+			Console.WriteLine( "Agencia cadastrada." );
+		}
+
+		public void Atualizar(IArmazenamento<Agencia> dao)
+		{
+			Console.Clear();
+
+			Console.WriteLine( "Atualizar Agencia:" );
+
+			Console.WriteLine( "Nome da Agencia a ser atualizada:" );
+			string nomeAgencia = Console.ReadLine();
+
+			Agencia agenciaAntiga = dao.Selecionar( nomeAgencia );
+
+			Agencia agenciaNova = new Agencia();
+
+			agenciaNova = InformacoesAgencia();
+
+			dao.Atualizar( agenciaAntiga, agenciaNova );
+
+			Console.WriteLine( "Agencia Atualizada." );
+		}
+
+		public void Remover(IArmazenamento<Agencia> dao)
+		{
+			Console.Clear();
+
+			Console.WriteLine( "Qual o nome da Agencia que deseja remover:" );
+			string nomeAgencia = Console.ReadLine();
+
+			Agencia agencia = dao.Selecionar( nomeAgencia );
+
+			dao.Remover( agencia );
+
+			Console.WriteLine( "Agencia Removida." );
+		}
+
+		public void SelecionarTudo(IArmazenamento<Agencia> dao)
+		{
+			Console.Clear();
+
+			Console.WriteLine( "Listagem de todas as agencias: \n" );
+
+			foreach (var agencia in dao.SelecionarTudo()) {
+				Console.WriteLine( string.Format( "Nome: {0} | Codigo: {1} | Nome Cidade: {2} | UF: {3} \n", agencia.Nome, agencia.Codigo, agencia.NomeCidade, agencia.UF ) );
+			}
+		}
+	}
 }
