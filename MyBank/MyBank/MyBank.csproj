@@ -42,22 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apresentação\Interface\IMenu.cs" />
-    <Compile Include="Apresentação\OBJ\Menu.cs" />
-    <Compile Include="Apresentação\OBJ\MenuAgencia.cs" />
-    <Compile Include="Apresentação\OBJ\MenuConta.cs" />
-    <Compile Include="Dominio\OBJ\Agencia.cs" />
-    <Compile Include="Dominio\OBJ\Conta.cs" />
-    <Compile Include="Dominio\OBJ\Pessoa.cs" />
-    <Compile Include="Apresentação\Program.cs" />
-    <Compile Include="Dominio\ValidaCadastro.cs" />
-    <Compile Include="Infraestrutura\AgenciaDAO.cs" />
-    <Compile Include="Infraestrutura\Interface\IArmazenamento.cs" />
+    <Compile Include="1-Apresentação\Interface\IMenu.cs" />
+    <Compile Include="1-Apresentação\OBJ\Menu.cs" />
+    <Compile Include="1-Apresentação\OBJ\MenuAgencia.cs" />
+    <Compile Include="1-Apresentação\OBJ\MenuConta.cs" />
+    <Compile Include="1-Apresentação\OBJ\MenuPessoa.cs" />
+    <Compile Include="3-Dominio\OBJ\Agencia.cs" />
+    <Compile Include="3-Dominio\OBJ\Conta.cs" />
+    <Compile Include="3-Dominio\OBJ\Pessoa.cs" />
+    <Compile Include="1-Apresentação\Program.cs" />
+    <Compile Include="3-Dominio\ValidaCadastro.cs" />
+    <Compile Include="4-Infraestrutura\AgenciaDAO.cs" />
+    <Compile Include="4-Infraestrutura\ContaDAO.cs" />
+    <Compile Include="4-Infraestrutura\Interface\IArmazenamento.cs" />
+    <Compile Include="4-Infraestrutura\PessoaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="2-Aplicação\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,7 +14,7 @@ namespace MyBank.Infraestrutura
 
 		public void Atualizar(Agencia objetoAntigo, Agencia objetoNovo)
 		{
-			Agencia agencia = agencias.Find( a => a.Id == objetoNovo.Id );
+			Agencia agencia = agencias.Find( a => a.Id == objetoAntigo.Id );
 			agencia.Nome = objetoNovo.Nome;
 			agencia.NomeCidade = objetoNovo.NomeCidade;
 			agencia.Codigo = objetoNovo.Codigo;

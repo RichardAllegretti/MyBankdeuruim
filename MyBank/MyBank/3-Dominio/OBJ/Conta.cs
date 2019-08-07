@@ -11,6 +11,8 @@ namespace MyBank.Dominio.OBJ
 		public int Id { get; set; }
 
 		private static int IdGlobal { get; set; }
+		
+		public string Nome { get; set; }
 
 		public Pessoa Pessoa { get; set; }
 
@@ -25,7 +27,7 @@ namespace MyBank.Dominio.OBJ
 			IdGlobal++;
 			Id = IdGlobal;
 			Agencia = agencia;
-			Pessoa = new Pessoa();
+			Pessoa = new Pessoa(agencia, this);
 		}
 	}
 }
