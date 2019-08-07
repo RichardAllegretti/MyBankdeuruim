@@ -32,8 +32,8 @@ namespace MyBank
 
 		public Pessoa(Agencia agencia, Conta conta)
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Agencia = agencia;
 			Conta = conta;
 		}

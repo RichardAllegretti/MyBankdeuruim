@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyBank._1_Apresentação.Interface;
 using MyBank._2_Aplicação.Interface;
 using MyBank.Dominio.OBJ;
 using MyBank.Infraestrutura.Interface;
 
 namespace MyBank.Apresentação.OBJ
 {
-	public class MenuConta : IMenuCadastro<Conta>
+	public class MenuConta : IMenuConta<Conta>
 	{
-		public void Inicio(Menu menu, IServico<Conta> serv)
+		public void Inicio(Menu menu, IServicoConta serv)
 		{
 			Console.WriteLine( "Bem vindo ao menu de Agencias." );
 			Console.WriteLine( "Digite a opção desejada: \n Cadastrar Conta: F1 \n Atualizar Conta: F2 \n Remover Conta: F3 \n Selecionar todas as Conta: F4 \n Voltar ao Inicio: F5" );
@@ -53,20 +54,23 @@ namespace MyBank.Apresentação.OBJ
 			return conta;
 		}
 
-		public void Cadastrar(IServico<Conta> serv)
+		public void Cadastrar(IServicoConta serv)
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Cadastro da Conta." );
 
-			Conta conta = InformacoesConta();
+			Console.WriteLine( "Digite o nome da agencia a ser vinculada." );
+			string nomeAgencia = Console.ReadLine();			;
+
+			Conta conta = InformacoesConta( serv.SelecionarAgencia( nomeAgencia ) );
 
 			serv.Cadastrar( conta );
 
 			Console.WriteLine( "Conta cadastrada." );
 		}
 
-		public void Atualizar(IServico<Conta> serv)
+		public void Atualizar(IServicoConta serv)
 		{
 			Console.Clear();
 
@@ -86,7 +90,7 @@ namespace MyBank.Apresentação.OBJ
 			Console.WriteLine( "Conta Atualizada." );
 		}
 
-		public void Remover(IServico<Conta> serv)
+		public void Remover(IServicoConta serv)
 		{
 			Console.Clear();
 
@@ -100,7 +104,7 @@ namespace MyBank.Apresentação.OBJ
 			Console.WriteLine( "Conta Removida." );
 		}
 
-		public void SelecionarTudo(IServico<Conta> serv)
+		public void SelecionarTudo(IServicoConta serv)
 		{
 			Console.Clear();
 

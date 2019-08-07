@@ -43,11 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1-Apresentação\Interface\IMenu.cs" />
+    <Compile Include="1-Apresentação\Interface\IMenuConta.cs" />
     <Compile Include="1-Apresentação\OBJ\Menu.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuAgencia.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuConta.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuPessoa.cs" />
     <Compile Include="2-Aplicação\Interface\IServico.cs" />
+    <Compile Include="2-Aplicação\Interface\IServicoConta.cs" />
     <Compile Include="2-Aplicação\ServicoConta.cs" />
     <Compile Include="2-Aplicação\ServicoAgencia.cs" />
     <Compile Include="2-Aplicação\ServicoPessoa.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyBank._2_Aplicação.Interface;
 using MyBank.Dominio.OBJ;
 using MyBank.Infraestrutura.Interface;
 
@@ -122,6 +123,31 @@ namespace MyBank.Apresentação.OBJ
 			pessoa.Conta = conta;
 
 			return pessoa;
+		}
+
+		public void Inicio(Menu menu, IServico<Pessoa> serv)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Cadastrar(IServico<Pessoa> serv)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Atualizar(IServico<Pessoa> serv)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Remover(IServico<Pessoa> serv)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void SelecionarTudo(IServico<Pessoa> serv)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

@@ -24,8 +24,8 @@ namespace MyBank.Dominio.OBJ
 
 		public Agencia()
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Conta = new List<Conta>();
 		}
 	}

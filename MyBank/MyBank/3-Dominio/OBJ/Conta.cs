@@ -24,8 +24,8 @@ namespace MyBank.Dominio.OBJ
 
 		public Conta(Agencia agencia)
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Agencia = agencia;
 			Pessoa = new Pessoa(agencia, this);
 		}
