@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyBank._2_Aplicação.Interface;
 using MyBank.Dominio.OBJ;
 using MyBank.Infraestrutura;
 using MyBank.Infraestrutura.Interface;
@@ -11,7 +12,7 @@ namespace MyBank.Apresentação.OBJ
 {
     public class MenuAgencia : IMenuCadastro<Agencia>
     {
-        public void Inicio(Menu menu, IArmazenamento<Agencia> dao)
+        public void Inicio(Menu menu, IServico<Agencia> serv)
         {
             Console.WriteLine("Bem vindo ao menu de Agencias.");
             Console.WriteLine("Digite a opção desejada: \n Cadastrar Agencia: F1 \n Atualizar Agencia: F2 \n Remover Agencia: F3 \n Selecionar todas as Agencias: F4 \n Voltar ao Inicio: F5");
@@ -20,16 +21,16 @@ namespace MyBank.Apresentação.OBJ
             switch (opcao.Key)
             {
                 case ConsoleKey.F1:
-                    Cadastrar(dao);
+                    Cadastrar(serv);
                     break;
                 case ConsoleKey.F2:
-                    Atualizar(dao);
+                    Atualizar( serv );
                     break;
                 case ConsoleKey.F3:
-                    Remover(dao);
+                    Remover( serv );
                     break;
                 case ConsoleKey.F4:
-					SelecionarTudo( dao);
+					SelecionarTudo( serv );
                     break;
                 case ConsoleKey.F5:
                     menu.Inicio();
@@ -59,7 +60,7 @@ namespace MyBank.Apresentação.OBJ
             return agencia;
         }
 
-		public void Cadastrar(IArmazenamento<Agencia> dao)
+		public void Cadastrar(IServico<Agencia> serv)
 		{
 			Console.Clear();
 
@@ -67,12 +68,12 @@ namespace MyBank.Apresentação.OBJ
 
 			Agencia agencia = InformacoesAgencia();
 
-			dao.Cadastrar( agencia );
+			serv.Cadastrar( agencia );
 
 			Console.WriteLine( "Agencia cadastrada." );
 		}
 
-		public void Atualizar(IArmazenamento<Agencia> dao)
+		public void Atualizar(IServico<Agencia> serv)
 		{
 			Console.Clear();
 
@@ -81,38 +82,38 @@ namespace MyBank.Apresentação.OBJ
 			Console.WriteLine( "Nome da Agencia a ser atualizada:" );
 			string nomeAgencia = Console.ReadLine();
 
-			Agencia agenciaAntiga = dao.Selecionar( nomeAgencia );
+			Agencia agenciaAntiga = serv.Selecionar( nomeAgencia );
 
 			Agencia agenciaNova = new Agencia();
 
 			agenciaNova = InformacoesAgencia();
 
-			dao.Atualizar( agenciaAntiga, agenciaNova );
+			serv.Atualizar( agenciaAntiga, agenciaNova );
 
 			Console.WriteLine( "Agencia Atualizada." );
 		}
 
-		public void Remover(IArmazenamento<Agencia> dao)
+		public void Remover(IServico<Agencia> serv)
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Qual o nome da Agencia que deseja remover:" );
 			string nomeAgencia = Console.ReadLine();
 
-			Agencia agencia = dao.Selecionar( nomeAgencia );
+			Agencia agencia = serv.Selecionar( nomeAgencia );
 
-			dao.Remover( agencia );
+			serv.Remover( agencia );
 
 			Console.WriteLine( "Agencia Removida." );
 		}
 
-		public void SelecionarTudo(IArmazenamento<Agencia> dao)
+		public void SelecionarTudo(IServico<Agencia> serv)
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Listagem de todas as agencias: \n" );
 
-			foreach (var agencia in dao.SelecionarTudo()) {
+			foreach (var agencia in serv.SelecionarTudo()) {
 				Console.WriteLine( string.Format( "Nome: {0} | Codigo: {1} | Nome Cidade: {2} | UF: {3} \n", agencia.Nome, agencia.Codigo, agencia.NomeCidade, agencia.UF ) );
 			}
 		}

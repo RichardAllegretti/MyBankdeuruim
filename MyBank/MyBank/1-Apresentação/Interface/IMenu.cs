@@ -1,4 +1,5 @@
-﻿using MyBank.Infraestrutura.Interface;
+﻿using MyBank._2_Aplicação.Interface;
+using MyBank.Infraestrutura.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace MyBank.Apresentação.OBJ
 {
     public interface IMenuCadastro<T>
     {
-        void Inicio(Menu menu, IArmazenamento<T> dao);
-		void Cadastrar(IArmazenamento<T> dao);
-		void Atualizar(IArmazenamento<T> dao);
-		void Remover(IArmazenamento<T> dao);
-		void SelecionarTudo(IArmazenamento<T> dao);
+        void Inicio(Menu menu, IServico<T> serv);
+		void Cadastrar(IServico<T> serv);
+		void Atualizar(IServico<T> serv);
+		void Remover(IServico<T> serv);
+		void SelecionarTudo(IServico<T> serv);
     }
 }

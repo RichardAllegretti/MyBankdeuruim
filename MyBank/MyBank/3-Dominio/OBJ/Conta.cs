@@ -10,7 +10,7 @@ namespace MyBank.Dominio.OBJ
 	{
 		public int Id { get; set; }
 
-		private static int IdGlobal { get; set; }
+		private static int _idGlobal { get; set; }
 		
 		public string Nome { get; set; }
 

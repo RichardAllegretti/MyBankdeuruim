@@ -12,7 +12,7 @@ namespace MyBank
 	{
 		public int Id { get; set; }
 
-		private int IdGlobal { get; set; }
+		private int _idGlobal { get; set; }
 
 		public string Nome { get; set; }
 

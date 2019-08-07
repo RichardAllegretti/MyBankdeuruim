@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyBank._2_Aplicação.Interface;
 using MyBank.Dominio.OBJ;
 using MyBank.Infraestrutura.Interface;
 
@@ -10,7 +11,7 @@ namespace MyBank.Apresentação.OBJ
 {
 	public class MenuConta : IMenuCadastro<Conta>
 	{
-		public void Inicio(Menu menu, IArmazenamento<Conta> dao)
+		public void Inicio(Menu menu, IServico<Conta> serv)
 		{
 			Console.WriteLine( "Bem vindo ao menu de Agencias." );
 			Console.WriteLine( "Digite a opção desejada: \n Cadastrar Conta: F1 \n Atualizar Conta: F2 \n Remover Conta: F3 \n Selecionar todas as Conta: F4 \n Voltar ao Inicio: F5" );
@@ -18,16 +19,16 @@ namespace MyBank.Apresentação.OBJ
 
 			switch (opcao.Key) {
 				case ConsoleKey.F1:
-					Cadastrar( dao );
+					Cadastrar( serv );
 					break;
 				case ConsoleKey.F2:
-					Atualizar( dao );
+					Atualizar( serv );
 					break;
 				case ConsoleKey.F3:
-					Remover( dao );
+					Remover( serv );
 					break;
 				case ConsoleKey.F4:
-					SelecionarTudo( dao );
+					SelecionarTudo( serv );
 					break;
 				case ConsoleKey.F5:
 					menu.Inicio();
@@ -52,7 +53,7 @@ namespace MyBank.Apresentação.OBJ
 			return conta;
 		}
 
-		public void Cadastrar(IArmazenamento<Conta> dao)
+		public void Cadastrar(IServico<Conta> serv)
 		{
 			Console.Clear();
 
@@ -60,12 +61,12 @@ namespace MyBank.Apresentação.OBJ
 
 			Conta conta = InformacoesConta();
 
-			dao.Cadastrar( conta );
+			serv.Cadastrar( conta );
 
 			Console.WriteLine( "Conta cadastrada." );
 		}
 
-		public void Atualizar(IArmazenamento<Conta> dao)
+		public void Atualizar(IServico<Conta> serv)
 		{
 			Console.Clear();
 
@@ -74,38 +75,38 @@ namespace MyBank.Apresentação.OBJ
 			Console.WriteLine( "Nome da Conta a ser atualizada:" );
 			string nomeConta = Console.ReadLine();
 
-			Conta contaAntiga = dao.Selecionar( nomeConta );
+			Conta contaAntiga = serv.Selecionar( nomeConta );
 
 			Conta contaNova = new Conta( contaAntiga.Agencia );
 
 			contaNova = InformacoesConta( contaAntiga.Agencia );
 
-			dao.Atualizar( contaAntiga, contaNova );
+			serv.Atualizar( contaAntiga, contaNova );
 
 			Console.WriteLine( "Conta Atualizada." );
 		}
 
-		public void Remover(IArmazenamento<Conta> dao)
+		public void Remover(IServico<Conta> serv)
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Qual o nome da conta que deseja remover:" );
 			string nomeConta = Console.ReadLine();
 
-			Conta conta = dao.Selecionar( nomeConta );
+			Conta conta = serv.Selecionar( nomeConta );
 
-			dao.Remover( conta );
+			serv.Remover( conta );
 
 			Console.WriteLine( "Conta Removida." );
 		}
 
-		public void SelecionarTudo(IArmazenamento<Conta> dao)
+		public void SelecionarTudo(IServico<Conta> serv)
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Listagem de todas as contas: \n" );
 
-			foreach (var conta in dao.SelecionarTudo()) {
+			foreach (var conta in serv.SelecionarTudo()) {
 				Console.WriteLine( string.Format( "Nome: {0} | Data de Abertura: {1} | Saldo: {2} | Nome do Cliente: {3} \n", conta.Nome, conta.DataAbertura, conta.Saldo, conta.Pessoa.Nome ) );
 			}
 		}
