@@ -12,32 +12,39 @@ namespace MyBank.Apresentação.OBJ
 {
     public class Menu
     {
-        private static MenuAgencia _agencia;
-        private static MenuConta _conta;
-		private static ServicoAgencia _servicoAgencia;
-		private static ServicoPessoa _servicoPessoa;
-		private static ContaDAO _daoConta;
-		private static ServicoConta _servicoConta = new ServicoConta(_daoConta, _servicoAgencia, _servicoPessoa );
+		private static AgenciaDAO _daoAgencia = new AgenciaDAO();
+		private static ContaDAO _daoConta = new ContaDAO();
+		private static PessoaDAO _daoPessoa = new PessoaDAO();		
+
+		private static ServicoAgencia _servicoAgencia = new ServicoAgencia(_daoAgencia);
+		private static ServicoConta _servicoConta = new ServicoConta( _daoConta, _servicoAgencia, _servicoPessoa );
+		private static ServicoPessoa _servicoPessoa = new ServicoPessoa( _daoPessoa, _servicoAgencia, _servicoConta );
+
+		private static MenuAgencia _agencia = new MenuAgencia( _servicoAgencia );
+		private static MenuConta _conta = new MenuConta( _servicoConta );
+		private static MenuPessoa _pessoa = new MenuPessoa( _servicoPessoa );
 
 		public void Inicio()
         {
             Console.WriteLine("Bem vindo ao MyBank. \n");
-            Console.WriteLine("Sobre Agencia digite: F1 \n Sobre Contas digite: F2");
+            Console.WriteLine( "Agencia: F1 \nContas: F2\nPessoa: F3" );
             var opcao = Console.ReadKey();
 
             switch (opcao.Key)
             {
                 case ConsoleKey.F1:
-                    _agencia.Inicio(this, _servicoAgencia);
+                    _agencia.Inicio(this);
                     break;
                 case ConsoleKey.F2:
-					_conta.Inicio( this, _servicoConta);
+					_conta.Inicio(this);
                     break;
-                default:
+				case ConsoleKey.F3:
+					_pessoa.Inicio( this );
+					break;
+				default:
                     Console.WriteLine("Opção Inválida.");
                     break;
             }
         }
-
     }
 }

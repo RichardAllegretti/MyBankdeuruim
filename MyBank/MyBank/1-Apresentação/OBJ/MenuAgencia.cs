@@ -12,8 +12,17 @@ namespace MyBank.Apresentação.OBJ
 {
     public class MenuAgencia : IMenuCadastro<Agencia>
     {
-        public void Inicio(Menu menu, IServico<Agencia> serv)
+		private IServico<Agencia> _agencia;
+
+		public MenuAgencia(IServico<Agencia> serv)
+		{
+			_agencia = serv;
+		}
+
+        public void Inicio(Menu menu)
         {
+			Console.Clear();
+
             Console.WriteLine("Bem vindo ao menu de Agencias.");
             Console.WriteLine("Digite a opção desejada: \n Cadastrar Agencia: F1 \n Atualizar Agencia: F2 \n Remover Agencia: F3 \n Selecionar todas as Agencias: F4 \n Voltar ao Inicio: F5");
             var opcao = Console.ReadKey();
@@ -21,16 +30,16 @@ namespace MyBank.Apresentação.OBJ
             switch (opcao.Key)
             {
                 case ConsoleKey.F1:
-                    Cadastrar(serv);
+                    Cadastrar();
                     break;
                 case ConsoleKey.F2:
-                    Atualizar( serv );
+                    Atualizar();
                     break;
                 case ConsoleKey.F3:
-                    Remover( serv );
+                    Remover();
                     break;
                 case ConsoleKey.F4:
-					SelecionarTudo( serv );
+					SelecionarTudo();
                     break;
                 case ConsoleKey.F5:
                     menu.Inicio();
@@ -38,29 +47,11 @@ namespace MyBank.Apresentação.OBJ
                 default:
                     Console.WriteLine("Opção Inválida.");
                     break;
-            }       
+            }
+			menu.Inicio();
         }
-
-        private Agencia InformacoesAgencia()
-        {
-            Agencia agencia = new Agencia();
-
-            Console.WriteLine("Codigo da agencia: ");
-            agencia.Codigo = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Nome da agencia: ");
-            agencia.Nome = Console.ReadLine();
-
-            Console.WriteLine("Nome da cidade: ");
-            agencia.NomeCidade = Console.ReadLine();
-
-            Console.WriteLine("UF: ");
-            agencia.UF = Convert.ToInt32(Console.ReadLine());
-
-            return agencia;
-        }
-
-		public void Cadastrar(IServico<Agencia> serv)
+		
+		public void Cadastrar()
 		{
 			Console.Clear();
 
@@ -68,12 +59,14 @@ namespace MyBank.Apresentação.OBJ
 
 			Agencia agencia = InformacoesAgencia();
 
-			serv.Cadastrar( agencia );
+			_agencia.Cadastrar( agencia );
 
 			Console.WriteLine( "Agencia cadastrada." );
+
+			Console.ReadLine();			
 		}
 
-		public void Atualizar(IServico<Agencia> serv)
+		public void Atualizar()
 		{
 			Console.Clear();
 
@@ -82,40 +75,65 @@ namespace MyBank.Apresentação.OBJ
 			Console.WriteLine( "Nome da Agencia a ser atualizada:" );
 			string nomeAgencia = Console.ReadLine();
 
-			Agencia agenciaAntiga = serv.Selecionar( nomeAgencia );
+			Agencia agenciaAntiga = _agencia.Selecionar( nomeAgencia );
 
 			Agencia agenciaNova = new Agencia();
 
 			agenciaNova = InformacoesAgencia();
 
-			serv.Atualizar( agenciaAntiga, agenciaNova );
+			_agencia.Atualizar( agenciaAntiga, agenciaNova );
 
 			Console.WriteLine( "Agencia Atualizada." );
+
+			Console.ReadLine();
 		}
 
-		public void Remover(IServico<Agencia> serv)
+		public void Remover()
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Qual o nome da Agencia que deseja remover:" );
 			string nomeAgencia = Console.ReadLine();
 
-			Agencia agencia = serv.Selecionar( nomeAgencia );
+			Agencia agencia = _agencia.Selecionar( nomeAgencia );
 
-			serv.Remover( agencia );
+			_agencia.Remover( agencia );
 
 			Console.WriteLine( "Agencia Removida." );
+
+			Console.ReadLine();
 		}
 
-		public void SelecionarTudo(IServico<Agencia> serv)
+		public void SelecionarTudo()
 		{
 			Console.Clear();
 
 			Console.WriteLine( "Listagem de todas as agencias: \n" );
 
-			foreach (var agencia in serv.SelecionarTudo()) {
+			foreach (var agencia in _agencia.SelecionarTudo()) {
 				Console.WriteLine( string.Format( "Nome: {0} | Codigo: {1} | Nome Cidade: {2} | UF: {3} \n", agencia.Nome, agencia.Codigo, agencia.NomeCidade, agencia.UF ) );
 			}
+
+			Console.ReadLine();
+		}
+
+		private Agencia InformacoesAgencia()
+		{
+			Agencia agencia = new Agencia();
+
+			Console.WriteLine( "Codigo da agencia: " );
+			agencia.Codigo = Convert.ToInt32( Console.ReadLine() );
+
+			Console.WriteLine( "Nome da agencia: " );
+			agencia.Nome = Console.ReadLine();
+
+			Console.WriteLine( "Nome da cidade: " );
+			agencia.NomeCidade = Console.ReadLine();
+
+			Console.WriteLine( "UF: " );
+			agencia.UF = Console.ReadLine();
+
+			return agencia;
 		}
 	}
 }

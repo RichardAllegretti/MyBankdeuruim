@@ -8,7 +8,7 @@ using MyBank.Apresentação.OBJ;
 
 namespace MyBank._1_Apresentação.Interface
 {
-	public interface IMenuConta<T>
+	public interface IMenuPessoa<T>
 	{
 		void Inicio(Menu menu);
 		void Cadastrar();

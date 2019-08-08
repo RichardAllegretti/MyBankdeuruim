@@ -10,10 +10,10 @@ namespace MyBank.Apresentação.OBJ
 {
     public interface IMenuCadastro<T>
     {
-        void Inicio(Menu menu, IServico<T> serv);
-		void Cadastrar(IServico<T> serv);
-		void Atualizar(IServico<T> serv);
-		void Remover(IServico<T> serv);
-		void SelecionarTudo(IServico<T> serv);
+        void Inicio(Menu menu);
+		void Cadastrar();
+		void Atualizar();
+		void Remover();
+		void SelecionarTudo();
     }
 }

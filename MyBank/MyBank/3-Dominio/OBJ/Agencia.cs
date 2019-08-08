@@ -18,7 +18,7 @@ namespace MyBank.Dominio.OBJ
 
 		public string NomeCidade { get; set; }
 
-		public int UF { get; set; }
+		public string UF { get; set; }
 
 		public List<Conta> Conta;
 

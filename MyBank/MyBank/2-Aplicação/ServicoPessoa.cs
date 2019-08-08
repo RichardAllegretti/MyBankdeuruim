@@ -10,7 +10,7 @@ using MyBank.Infraestrutura.Interface;
 
 namespace MyBank._2_Aplicação
 {
-	public class ServicoPessoa : IServico<Pessoa>
+	public class ServicoPessoa : IServicoPessoa
 	{
 		private IArmazenamento<Pessoa> _pessoa;
 		private IServico<Agencia> _agencia;
@@ -41,6 +41,16 @@ namespace MyBank._2_Aplicação
 		public Pessoa Selecionar(string nome)
 		{
 			return _pessoa.Selecionar( nome );
+		}
+
+		public Agencia SelecionarAgencia(string nome)
+		{
+			return _agencia.Selecionar( nome );
+		}
+
+		public Conta SelecionarConta(string nome)
+		{
+			return _conta.Selecionar( nome );
 		}
 
 		public List<Pessoa> SelecionarTudo()
