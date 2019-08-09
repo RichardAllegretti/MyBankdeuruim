@@ -10,7 +10,7 @@ namespace MyBank.Dominio.OBJ
 	{
 		public int Id { get; set; }
 
-		private static int IdGlobal { get; set; }
+		private static int _idGlobal { get; set; }
 		
 		public string Nome { get; set; }
 
@@ -24,8 +24,8 @@ namespace MyBank.Dominio.OBJ
 
 		public Conta(Agencia agencia)
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Agencia = agencia;
 			Pessoa = new Pessoa(agencia, this);
 		}

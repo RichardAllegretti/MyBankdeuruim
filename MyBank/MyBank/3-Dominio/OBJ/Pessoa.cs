@@ -12,7 +12,7 @@ namespace MyBank
 	{
 		public int Id { get; set; }
 
-		private int IdGlobal { get; set; }
+		private int _idGlobal { get; set; }
 
 		public string Nome { get; set; }
 
@@ -32,8 +32,8 @@ namespace MyBank
 
 		public Pessoa(Agencia agencia, Conta conta)
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Agencia = agencia;
 			Conta = conta;
 		}
