@@ -43,10 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1-Apresentação\Interface\IMenu.cs" />
+    <Compile Include="1-Apresentação\Interface\IMenuConta.cs" />
+    <Compile Include="1-Apresentação\Interface\IMenuPessoa.cs" />
     <Compile Include="1-Apresentação\OBJ\Menu.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuAgencia.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuConta.cs" />
     <Compile Include="1-Apresentação\OBJ\MenuPessoa.cs" />
+    <Compile Include="2-Aplicação\Interface\IServico.cs" />
+    <Compile Include="2-Aplicação\Interface\IServicoConta.cs" />
+    <Compile Include="2-Aplicação\Interface\IServicoPessoa.cs" />
+    <Compile Include="2-Aplicação\ServicoConta.cs" />
+    <Compile Include="2-Aplicação\ServicoAgencia.cs" />
+    <Compile Include="2-Aplicação\ServicoPessoa.cs" />
     <Compile Include="3-Dominio\OBJ\Agencia.cs" />
     <Compile Include="3-Dominio\OBJ\Conta.cs" />
     <Compile Include="3-Dominio\OBJ\Pessoa.cs" />
@@ -61,8 +69,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="2-Aplicação\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

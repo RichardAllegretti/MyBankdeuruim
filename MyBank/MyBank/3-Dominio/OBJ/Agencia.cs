@@ -10,7 +10,7 @@ namespace MyBank.Dominio.OBJ
 	{
 		public int Id { get; set; }
 
-		private static int IdGlobal { get; set; }
+		private static int _idGlobal { get; set; }
 
 		public int Codigo { get; set; }
 
@@ -18,14 +18,14 @@ namespace MyBank.Dominio.OBJ
 
 		public string NomeCidade { get; set; }
 
-		public int UF { get; set; }
+		public string UF { get; set; }
 
 		public List<Conta> Conta;
 
 		public Agencia()
 		{
-			IdGlobal++;
-			Id = IdGlobal;
+			_idGlobal++;
+			Id = _idGlobal;
 			Conta = new List<Conta>();
 		}
 	}
