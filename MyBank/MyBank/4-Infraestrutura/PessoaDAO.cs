@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyBank._3_Dominio.OBJ;
+using MyBank._4_Infraestrutura.Interface;
 using MyBank.Infraestrutura.Interface;
 
 namespace MyBank.Infraestrutura

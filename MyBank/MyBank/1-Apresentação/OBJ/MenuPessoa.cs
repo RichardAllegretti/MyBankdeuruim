@@ -91,7 +91,7 @@ namespace MyBank.Apresentação.OBJ
 
 			Console.WriteLine( "Pessoa Atualizada." );
 
-			Console.ReadLine()
+			Console.ReadLine();
 		}
 
 		public void Remover()

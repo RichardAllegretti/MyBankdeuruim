@@ -48,6 +48,7 @@ namespace MyBank.Apresentação.OBJ
                     Console.WriteLine("Opção Inválida.");
                     break;
             }
+
 			menu.Inicio();
         }
 		
