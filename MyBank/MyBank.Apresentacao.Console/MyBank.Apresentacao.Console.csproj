@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFF42729-9704-448E-B9CC-3D301FBB3AC3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyBank.Apresentacao.Console</RootNamespace>
+    <AssemblyName>MyBank.Apresentacao.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IMenu.cs" />
+    <Compile Include="Interfaces\IMenuConta.cs" />
+    <Compile Include="Interfaces\IMenuPessoa.cs" />
+    <Compile Include="objetos\Menu.cs" />
+    <Compile Include="objetos\MenuAgencia.cs" />
+    <Compile Include="objetos\MenuConta.cs" />
+    <Compile Include="objetos\MenuPessoa.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyBank.Aplicacao\MyBank.Aplicacao.csproj">
+      <Project>{b9e056f2-d351-4103-a550-da4769c31f5e}</Project>
+      <Name>MyBank.Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyBank.Dominio\MyBank.Dominio.csproj">
+      <Project>{92b930c8-f2f4-4df5-bea9-4ea8b7186cb5}</Project>
+      <Name>MyBank.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyBank.Infra.Gerenciamento.Banco\MyBank.Infra.Gerenciamento.Banco.csproj">
+      <Project>{27bac8de-bf4b-4818-a8e4-4622e0f2e348}</Project>
+      <Name>MyBank.Infra.Gerenciamento.Banco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyBank.Infra.SQL\MyBank.Infra.SQL.csproj">
+      <Project>{2b3456f4-33f5-4caf-b4af-ce8776f390d0}</Project>
+      <Name>MyBank.Infra.SQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
